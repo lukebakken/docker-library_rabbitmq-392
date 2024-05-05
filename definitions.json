@@ -1,0 +1,58 @@
+{
+    "rabbit_version": "3.12.13",
+    "rabbitmq_version": "3.12.13",
+    "product_name": "RabbitMQ",
+    "product_version": "3.12.13",
+    "users": [
+        {
+            "name": "rmuser",
+            "password_hash": "znfAmCl2fvKYgpwnHup7m0FxbtW7TzMt2ITX5mWlpSBYWESz",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": [
+                "administrator"
+            ],
+            "limits": {}
+        }
+    ],
+    "vhosts": [
+        {
+            "name": "/"
+        }
+    ],
+    "permissions": [
+        {
+            "user": "rmuser",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        }
+    ],
+    "topic_permissions": [],
+    "parameters": [],
+    "global_parameters": [],
+    "policies": [],
+    "queues": [
+        {
+            "name": "docker-library_rabbitmq-392",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic",
+                "x-queue-version": 2
+            }
+        }
+    ],
+    "exchanges": [],
+    "bindings": [
+        {
+            "source": "amq.topic",
+            "vhost": "/",
+            "destination": "docker-library_rabbitmq-392",
+            "destination_type": "queue",
+            "routing_key": "foo.bar.baz",
+            "arguments": {}
+        }
+    ]
+}
